@@ -1,5 +1,4 @@
-import nextAuth from "next-auth";
-// import NextAuth from "next-auth/next";
+import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import User from "../../../../models/user";
 import { connectedToDB } from "../../../../utils/database";
@@ -9,7 +8,7 @@ console.log({
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 });
 
-const handler = nextAuth({
+const handler = NextAuth({
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
@@ -32,7 +31,7 @@ const handler = nextAuth({
         email: profile.email,
       });
 
-      // if not create new user
+      // if not, create new user
       if (!userExists) {
         await User.create({
           email: profile.email,
