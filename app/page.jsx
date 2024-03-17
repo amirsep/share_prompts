@@ -1,3 +1,4 @@
+import PromptCard from "@components/PromptCard";
 import Feed from "../components/Feed";
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
           discover, create and share creative prompts
         </p>
         <Feed />
+        <PromptCard />
       </section>
     </>
   );

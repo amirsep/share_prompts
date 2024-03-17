@@ -11,10 +11,11 @@ const Nav = () => {
   const [providers, setProviders] = useState(null);
 
   useEffect(() => {
-    async () => {
+    const setUpProviders = async () => {
       const response = await getProviders();
       setProviders(response);
     };
+    setUpProviders();
   }, []);
 
   return (
@@ -30,6 +31,8 @@ const Nav = () => {
         <p className="logo_text">Promptopia</p>
       </Link>
 
+      {/* {alert(providers)} */}
+
       {/* desktop navigation */}
       <div className="sm:flex hidden">
         {session?.user ? (
@@ -42,7 +45,7 @@ const Nav = () => {
             </button>
             <Link href="/profile">
               <Image
-                src="/assets/images/logo.svg"
+                src={session?.user.image}
                 alt="profile-image"
                 width={37}
                 height={37}
@@ -72,7 +75,7 @@ const Nav = () => {
         {session?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={session?.user?.image}
               width={37}
               height={37}
               alt="profile-logo-mobile"
